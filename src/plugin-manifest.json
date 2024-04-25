@@ -1,0 +1,15 @@
+{
+  "id": "flotiq.slug",
+  "name": "Slug",
+  "description": "Generate slug plugin",
+  "version": "1.0.0",
+  "repository": "",
+  "url": "https://localhost:3050/static/js/main.js",
+  "permissions": [
+    {
+      "ctdName": "_plugin_settings",
+      "canUpdate": true,
+      "type": "CO"
+    }
+  ]
+}

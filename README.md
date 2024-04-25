@@ -39,5 +39,5 @@
 <!-- TO DO fix react dev cors -->
 
 1. Open Flotiq editor
-2. Add a new plugin and paste the URL to the hosted `plugin-manifest.json` file (unfortunatelly you cannot use `https://localhost:3050/plugin-manifest.json` due to CORS issues in the react dev server )
+2. Add a new plugin and paste the URL to the hosted `plugin-manifest.json` file (unfortunately you cannot use `https://localhost:3050/plugin-manifest.json` due to CORS issues in the react dev server )
 3. Navigate to the view that is modified by the plugin

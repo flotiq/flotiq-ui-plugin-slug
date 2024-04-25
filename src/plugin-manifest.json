@@ -3,8 +3,8 @@
   "name": "Slug",
   "description": "This plugin allows you to generate slug data based on string field in content object form view.",
   "version": "1.0.0",
-  "repository": "",
-  "url": "https://localhost:3050/static/js/main.js",
+  "repository": "https://github.com/flotiq/flotiq-ui-plugin-slug",
+  "url": "https://localhost:3050/static/js/bundle.js",
   "permissions": [
     {
       "ctdName": "_plugin_settings",

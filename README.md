@@ -5,9 +5,10 @@
 1. `yarn`
 2. `yarn start`
 3. work work work
-4. `yarn build`
-5. paste js code from `./build/static/js/main.xxxxxxxx.js` to Flotiq console
-6. navigate to affected Flotiq pages
+4. update your `src/plugin-manifest.json` file to contain the production URL and other plugin information
+5. `yarn build`
+6. paste js code from `./build/static/js/main.xxxxxxxx.js` to Flotiq console
+7. navigate to affected Flotiq pages
 
 
 ## Deployment
@@ -16,7 +17,7 @@
 
 ## Loading the plugin
 
-### Via URL
+### URL
 
 1. Open Flotiq editor
 2. Open Chrome Dev console
@@ -26,15 +27,17 @@
    ```
 4. Navigate to the view that is modified by the plugin
 
-### Via directly
+### Directly
 
 1. Open Flotiq editor
 2. Open Chrome Dev console
 3. Paste the content of `static/js/main.xxxxxxxx.js` 
 4. Navigate to the view that is modified by the plugin
 
-### Via deployment
+### Deployment
+
+<!-- TO DO fix react dev cors -->
 
 1. Open Flotiq editor
-2. Add a new plugin and paste the URL to the hosted `plugin-manifest.json` file
+2. Add a new plugin and paste the URL to the hosted `plugin-manifest.json` file (unfortunatelly you cannot use `https://localhost:3050/plugin-manifest.json` due to CORS issues in the react dev server )
 3. Navigate to the view that is modified by the plugin

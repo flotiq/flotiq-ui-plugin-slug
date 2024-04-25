@@ -1,28 +1,28 @@
-const appRoots = {}
+const appRoots = {};
 
 export const onElementRemoved = (element, callback) => {
-  new MutationObserver(function() {
-    if(!element.parentElement) {
+  new MutationObserver(function () {
+    if (!element.parentElement) {
       callback();
       this.disconnect();
     }
-  }).observe(element.parentElement, {childList: true});
-}
+  }).observe(element.parentElement, { childList: true });
+};
 
 export const addElementToCache = (element, root, key) => {
   appRoots[key] = {
     element,
-    root
+    root,
   };
 
   setTimeout(() => {
     onElementRemoved(element, () => delete appRoots[key]);
-  }, 1)
-}
+  }, 1);
+};
 
 export const getCachedElement = (key) => {
   return appRoots[key];
-}
+};
 
 export const registerFn = (pluginInfo, callback) => {
   if (window.FlotiqPlugins?.add) {

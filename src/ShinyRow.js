@@ -6,15 +6,22 @@ function ShinyRow({ data }) {
     setToggle((t) => !t);
   }, []);
 
-  const style = useMemo(() => ({
-    color: 'rgb(0, 131, 252)',
-    cursor: 'pointer',
-    fontStyle: toggle ? 'italic' : 'normal',
-    fontWeight: toggle ? 'bold' : 'normal',
-  }), [toggle])
+  const style = useMemo(
+    () => ({
+      color: "rgb(0, 131, 252)",
+      cursor: "pointer",
+      fontStyle: toggle ? "italic" : "normal",
+      fontWeight: toggle ? "bold" : "normal",
+    }),
+    [toggle]
+  );
 
   return (
-    <button onClick={click} style={style} dangerouslySetInnerHTML={{__html: data}} />
+    <button
+      onClick={click}
+      style={style}
+      dangerouslySetInnerHTML={{ __html: data }}
+    />
   );
 }
 

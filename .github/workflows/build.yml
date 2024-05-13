@@ -26,7 +26,7 @@ jobs:
         MANIFEST=$(find ./$BUILDFOLDER -name plugin-manifest.json)
         [ -z $MANIFEST ] && cp plugin-manifest $BUILDFOLDER
         MANIFEST="$BUILDFOLDER/plugin-manifest.json"
-        VERSION=$(jq '.version' $MANIFEST)
+        VERSION=$(jq '.version' $MANIFEST -r)
         echo "version=$VERSION"
         mkdir -p output
         tar -C $BUILDFOLDER -czf output/$VERSION.tar.gz .

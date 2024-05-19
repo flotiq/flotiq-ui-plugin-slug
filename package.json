@@ -13,8 +13,8 @@
   },
   "scripts": {
     "start": "concurrently \"yarn start:manifest-watch\" \"yarn react-scripts start\"",
-    "start:manifest-watch": "cpx ./src/plugin-manifest.json ./public/ --watch",
-    "build": "cpx ./src/plugin-manifest.json ./public/ && react-scripts build",
+    "start:manifest-watch": "cpx -v ./src/plugin-manifest.json ./public/ --watch",
+    "build": "cpx -v ./src/plugin-manifest.json ./public/ && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

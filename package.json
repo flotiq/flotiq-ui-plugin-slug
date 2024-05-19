@@ -14,7 +14,7 @@
   "scripts": {
     "start": "concurrently \"yarn start:manifest-watch\" \"yarn react-scripts start\"",
     "start:manifest-watch": "cpx ./src/plugin-manifest.json ./public/ --watch",
-    "build": "react-scripts build && cpx ./src/plugin-manifest.json ./public/",
+    "build": "cpx ./src/plugin-manifest.json ./public/ && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

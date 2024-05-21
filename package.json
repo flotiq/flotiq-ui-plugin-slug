@@ -12,8 +12,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "cp './src/plugin-manifest.json' './public/plugin-manifest.json' && react-scripts start",
-    "build": "react-scripts build && cp './src/plugin-manifest.json' './build/plugin-manifest.json'",
+    "start": "concurrently \"yarn start:manifest-watch\" \"yarn react-scripts start\"",
+    "start:manifest-watch": "cpx -v ./src/plugin-manifest.json ./public/ --watch",
+    "build": "cpx -v ./src/plugin-manifest.json ./public/ && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -34,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cpx": "^1.5.0"
   }
 }

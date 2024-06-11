@@ -56,7 +56,7 @@ const SettingsItem = ({
           value={formik.values.settings[idx].content_type}
           onChange={onContentTypeChange}
           onBlur={formik.handleBlur}
-          label={t("ContentTypes")}
+          label={t("ContentType")}
           disabled={disabled}
           emptyText={t("NoContentTypes")}
           search

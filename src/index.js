@@ -33,9 +33,7 @@ registerFn(pluginInfo, (handler, client, { toast, getLanguage }) => {
   handler.on("flotiq.form.field::config", (data) =>
     handleFormFieldConfig(data, pluginInfo)
   );
-  handler.on("flotiq.plugin::migrate", (data) =>
-    handleMigrate(data, pluginInfo)
-  );
+  handler.on("flotiq.plugin::migrate", handleMigrate);
 });
 
 const pluginManagePreviewRoot = document.getElementById("manage-preview-root");

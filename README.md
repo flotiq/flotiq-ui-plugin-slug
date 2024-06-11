@@ -17,8 +17,8 @@ To manage a plugin, you must first add it to your plugins. Click the "+" icon to
 Field descriptions: 
 
 * `Content Type` - Defines the type of objects for which the slug will be generated.
-* `Key` - Determines the field on which the slug will be based.
-* `Label` - Specifies the field to which the slug will be entered.
+* `Slug source field` - Determines the field on which the slug will be based.
+* `Target field` - Specifies the field to which the slug will be entered.
 
 # Development
 

@@ -20,8 +20,8 @@ const SettingsField = ({
   const onAddSetting = useCallback(() => {
     arrayHelpers.push({
       content_type: "",
-      key: "",
-      label: "",
+      source: "",
+      target: "",
     });
   }, [arrayHelpers]);
 

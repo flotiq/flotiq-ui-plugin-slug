@@ -38,20 +38,20 @@ const ManageContent = ({
         settings: yup.array().of(
           yup.object().shape({
             content_type: yup.string().required(t("FieldRequired")),
-            key: yup
+            source: yup
               .string()
               .required(t("FieldRequired"))
               .test({
-                name: "key",
+                name: "source",
                 message: t("FieldNotFound"),
                 test: (value, context) =>
                   ctdFieldsDict?.[context.parent.content_type]?.includes(value),
               }),
-            label: yup
+            target: yup
               .string()
               .required(t("FieldRequired"))
               .test({
-                name: "label",
+                name: "target",
                 message: t("FieldNotFound"),
                 test: (value, context) =>
                   ctdFieldsDict?.[context.parent.content_type]?.includes(value),

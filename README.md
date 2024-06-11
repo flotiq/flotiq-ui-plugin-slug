@@ -17,8 +17,8 @@ To manage a plugin, you must first add it to your plugins. Click the "+" icon to
 Field descriptions: 
 
 * `Content Type` - Defines the type of objects for which the slug will be generated.
-* `Key` - Determines the field on which the slug will be based.
-* `Label` - Specifies the field to which the slug will be entered.
+* `Slug source field` - Determines the field on which the slug will be based.
+* `Target field` - Specifies the field to which the slug will be entered.
 
 # Development
 
@@ -57,8 +57,6 @@ Field descriptions:
 
 ### Deployment
 
-<!-- TO DO fix react dev cors -->
-
 1. Open Flotiq editor
-2. Add a new plugin and paste the URL to the hosted `plugin-manifest.json` file (unfortunately you cannot use `https://localhost:3050/plugin-manifest.json` due to CORS issues in the react dev server )
+2. Add a new plugin and paste the URL to the hosted `plugin-manifest.json` file (you can use `https://localhost:3050/plugin-manifest.json` as long as you have accepted self-signed certificate for this url)
 3. Navigate to the view that is modified by the plugin

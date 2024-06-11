@@ -26,8 +26,8 @@ const SettingsItem = ({
 
       setSelectedType((prevCtd) => {
         if (prevCtd !== ctdName) {
-          formik.setFieldValue(`settings[${idx}].key`, "");
-          formik.setFieldValue(`settings[${idx}].label`, "");
+          formik.setFieldValue(`settings[${idx}].source`, "");
+          formik.setFieldValue(`settings[${idx}].target`, "");
         }
         return ctdName;
       });
@@ -62,7 +62,7 @@ const SettingsItem = ({
           search
         />
 
-        <Field name={`settings[${idx}].key`}>
+        <Field name={`settings[${idx}].source`}>
           {({ field, meta }) => {
             return (
               <Dropdown
@@ -74,17 +74,17 @@ const SettingsItem = ({
                 value={field.value}
                 onChange={field.onChange}
                 onBlur={field.onBlur}
-                label={t("Key")}
+                label={t("Source")}
                 disabled={disabled}
                 emptyText={t("NoFields")}
-                helpText={t("KeyHelpText")}
+                helpText={t("SourceHelpText")}
                 error={meta.touched && meta.error}
               />
             );
           }}
         </Field>
 
-        <Field name={`settings[${idx}].label`}>
+        <Field name={`settings[${idx}].target`}>
           {({ field, meta }) => {
             return (
               <Dropdown
@@ -96,10 +96,10 @@ const SettingsItem = ({
                 value={field.value}
                 onChange={field.onChange}
                 onBlur={field.onBlur}
-                label={t("Label")}
+                label={t("Target")}
                 disabled={disabled}
                 emptyText={t("NoFields")}
-                helpText={t("LabelHelpText")}
+                helpText={t("TargetHelpText")}
                 error={meta.touched && meta.error}
                 isTop
               />

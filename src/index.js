@@ -1,7 +1,8 @@
 import { registerFn } from "./common/plugin-helpers";
 import { handleManagePlugin, loadManagePlugin } from "./plugins/managePlugin";
 import { handleFormFieldConfig } from "./plugins/formFieldConfig";
-import pluginInfo from './plugin-manifest.json'
+import { handleMigrate } from "./plugins/migrate";
+import pluginInfo from "./plugin-manifest.json";
 
 /* eslint import/no-webpack-loader-syntax: off */
 import cssString from "!!raw-loader!./styles/index.css";
@@ -32,6 +33,7 @@ registerFn(pluginInfo, (handler, client, { toast, getLanguage }) => {
   handler.on("flotiq.form.field::config", (data) =>
     handleFormFieldConfig(data, pluginInfo)
   );
+  handler.on("flotiq.plugin::migrate", handleMigrate);
 });
 
 const pluginManagePreviewRoot = document.getElementById("manage-preview-root");

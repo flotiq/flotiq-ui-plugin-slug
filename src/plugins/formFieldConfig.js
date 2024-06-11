@@ -2,8 +2,8 @@ import slug from "slug";
 import { addElementToCache, getCachedElement } from "../common/plugin-helpers";
 
 const regenerate = (formik, fieldName, slugFieldName) => {
-  const keyValue = formik.values[slugFieldName];
-  if (keyValue) formik.setFieldValue(fieldName, slug(keyValue));
+  const source = formik.values[slugFieldName];
+  if (source) formik.setFieldValue(fieldName, slug(source));
 };
 
 const handleCoForm = (
@@ -11,21 +11,19 @@ const handleCoForm = (
   slugSettings,
   pluginInfo
 ) => {
-  const settingsForKeyField = slugSettings
-    .filter(({ key }) => key === name)
-    .map(({ label }) => label);
+  const sourceSettings = slugSettings
+    .filter(({ source }) => source === name)
+    .map(({ target }) => target);
 
-  const settingsForLabelField = slugSettings.find(
-    ({ label }) => label === name
-  );
+  const targetSettings = slugSettings.find(({ target }) => target === name);
 
-  if (!isEditing && settingsForKeyField.length) {
+  if (!isEditing && sourceSettings.length) {
     config.onBlur = (e) => {
-      settingsForKeyField.forEach((fieldName) => {
-        const labelType =
+      sourceSettings.forEach((fieldName) => {
+        const targetType =
           contentType.schemaDefinition.allOf[1].properties?.[fieldName]?.type;
 
-        if (formik.values[fieldName] || labelType !== "string") return;
+        if (formik.values[fieldName] || targetType !== "string") return;
 
         const newValue = slug(value);
         formik.setFieldValue(fieldName, newValue);
@@ -35,7 +33,7 @@ const handleCoForm = (
     };
   }
 
-  if (settingsForLabelField) {
+  if (targetSettings) {
     const cacheKey = `${pluginInfo.id}-${contentType.name}-${name}`;
     const cacheEntry = getCachedElement(cacheKey);
 
@@ -48,7 +46,7 @@ const handleCoForm = (
       const cacheData = {
         formik,
         fieldName: name,
-        slugFieldName: settingsForLabelField.key,
+        slugFieldName: targetSettings.source,
       };
 
       const button = document.createElement("button");

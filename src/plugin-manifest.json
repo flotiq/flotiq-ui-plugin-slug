@@ -2,7 +2,7 @@
   "id": "flotiq.slug",
   "name": "Slug",
   "description": "This plugin automatically generates a slug based on existing data within a Content Object and enters the slug data into another field.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "repository": "https://github.com/flotiq/flotiq-ui-plugin-slug",
   "url": "http://localhost:3050/static/js/bundle.js",
   "permissions": [

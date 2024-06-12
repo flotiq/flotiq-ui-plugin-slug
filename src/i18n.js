@@ -41,7 +41,7 @@ i18n.use(initReactI18next).init({
           "Coś poszło nie tak podczas zapisywania ustawień wtyczki. Sprawdź konsolę, aby uzyskać więcej informacji",
         Settings: "Ustawienia",
         Source: "Pole źródłowe sluga",
-        SourceHelpText: "The field on which the slug is based",
+        SourceHelpText: "Pole, na bazie którego tworzony jest slug",
         Target: "Pole docelowe",
         TargetHelpText: "Pole, do którego slug zostanie wpisany",
         Unique: "Pole docelowe nie może być tym samym polem, co źródło sluga",

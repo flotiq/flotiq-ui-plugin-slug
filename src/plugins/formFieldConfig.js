@@ -72,14 +72,18 @@ const handleCoForm = (
 };
 
 export function handleFormFieldConfig(
-  { contentType, userPlugins, config, ...data },
-  pluginInfo
+  { contentType, config, ...data },
+  pluginInfo,
+  getPluginSettings
 ) {
   if (!config) return;
 
-  const slugSettings = JSON.parse(
-    userPlugins?.find(({ id }) => id === pluginInfo.id)?.settings || "[]"
-  )?.filter(({ content_type }) => content_type === contentType.name);
+  const pluginSettings = getPluginSettings();
+  const parsedSettings = JSON.parse(pluginSettings || "[]");
+
+  const slugSettings = parsedSettings?.filter(
+    ({ content_type }) => content_type === contentType.name
+  );
 
   if (slugSettings?.length > 0)
     return handleCoForm(

@@ -25,16 +25,19 @@ const loadStyles = () => {
   }
 };
 
-registerFn(pluginInfo, (handler, client, { toast, getLanguage }) => {
-  loadStyles();
-  handler.on("flotiq.plugins.manage::render", (data) =>
-    handleManagePlugin(data, pluginInfo, client, toast, getLanguage)
-  );
-  handler.on("flotiq.form.field::config", (data) =>
-    handleFormFieldConfig(data, pluginInfo)
-  );
-  handler.on("flotiq.plugin::migrate", handleMigrate);
-});
+registerFn(
+  pluginInfo,
+  (handler, client, { toast, getLanguage, getPluginSettings }) => {
+    loadStyles();
+    handler.on("flotiq.plugins.manage::render", (data) =>
+      handleManagePlugin(data, pluginInfo, client, toast, getLanguage)
+    );
+    handler.on("flotiq.form.field::config", (data) =>
+      handleFormFieldConfig(data, pluginInfo, getPluginSettings)
+    );
+    handler.on("flotiq.plugin::migrate", handleMigrate);
+  }
+);
 
 const pluginManagePreviewRoot = document.getElementById("manage-preview-root");
 

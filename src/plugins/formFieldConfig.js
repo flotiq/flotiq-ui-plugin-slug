@@ -82,7 +82,7 @@ export function handleFormFieldConfig(
   const parsedSettings = JSON.parse(pluginSettings || "[]");
 
   const slugSettings = parsedSettings?.filter(
-    ({ content_type }) => content_type === contentType.name
+    ({ content_type }) => content_type === contentType?.name
   );
 
   if (slugSettings?.length > 0)

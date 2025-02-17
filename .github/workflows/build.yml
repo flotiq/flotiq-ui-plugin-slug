@@ -37,7 +37,7 @@ jobs:
         echo "version=$VERSION" >> $GITHUB_ENV
         REPO_NAME="$(basename $GITHUB_REPOSITORY)"
         echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
-        UPLOAD_URL="$MINIO_URL/flotiq-plugins-dev/$REPO_NAME/$GITHUB_REF/$ENTRYPOINT_PATH"
+        UPLOAD_URL="$MINIO_URL/flotiq-plugins-dev/$REPO_NAME/$GITHUB_HEAD_REF/$ENTRYPOINT_PATH"
         echo $UPLOAD_URL
         tmp=$(mktemp)
         jq --arg upload_url "$UPLOAD_URL" '.url = $upload_url' $MANIFEST && mv "$tmp" $MANIFEST
@@ -52,7 +52,7 @@ jobs:
         bucket: 'flotiq-plugins-dev'
         # Optional inputs with their defaults:
         source_dir: 'dist'
-        target_dir: '/${{ env.REPO_NAME }}/${{ github.ref }}/'
+        target_dir: '/${{ env.REPO_NAME }}/${{ github.head_ref }}/'
     - name: Create artifact 
       uses: actions/upload-artifact@v4
       with:

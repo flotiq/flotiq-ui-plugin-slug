@@ -45,8 +45,8 @@ jobs:
         secret_key: ${{ secrets.MINIO_SECRET_KEY }}
         bucket: 'flotiq-plugins-dev'
         # Optional inputs with their defaults:
-        source_dir: 'public'
-        target_dir: '/${{ env.REPO_NAME }}/${{ env.version }}'
+        source_dir: 'dist'
+        target_dir: '/${{ env.REPO_NAME }}/${{ github.ref }}/'
     - name: Create artifact 
       uses: actions/upload-artifact@v4
       with:

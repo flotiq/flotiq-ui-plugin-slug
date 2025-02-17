@@ -29,7 +29,7 @@ jobs:
         VERSION=$(jq '.version' $MANIFEST -r)
         URL=$(jq '.url' $MANIFEST -r)
         ENTRYPOINT_NAME=$(basename $URL)
-        ENTRYPOINT_PATH=$(find ./BUILDFOLDER -name $ENTRYPOINT_NAME)
+        ENTRYPOINT_PATH=$(find ./$BUILDFOLDER -name $ENTRYPOINT_NAME)
         echo "version=$VERSION"
         mkdir -p output
         tar -C $BUILDFOLDER -czf output/$VERSION.tar.gz .

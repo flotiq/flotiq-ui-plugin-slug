@@ -32,11 +32,26 @@ jobs:
         tar -C $BUILDFOLDER -czf output/$VERSION.tar.gz .
         ls -la output
         echo "version=$VERSION" >> $GITHUB_ENV
+        REPO_NAME="$(basename $GITHUB_REPOSITORY)"
+        echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
+        UPLOAD_URL="$MINIO_URL/flotiq-plugins-dev/$REPO_NAME/$GITHUB_REF/"
+      env:
+        MINIO_URL: ${{ secrets.MINIO_ENDPOINT }}
+    - name: Minio Deploy
+      uses: lovellfelix/minio-deploy-action@v1
+      with:
+        endpoint: ${{ secrets.MINIO_ENDPOINT }}
+        access_key: ${{ secrets.MINIO_ACCESS_KEY }}
+        secret_key: ${{ secrets.MINIO_SECRET_KEY }}
+        bucket: 'flotiq-plugins-dev'
+        # Optional inputs with their defaults:
+        source_dir: 'public'
+        target_dir: '/${{ env.REPO_NAME }}/${{ env.version }}'
     - name: Create artifact 
       uses: actions/upload-artifact@v4
       with:
           name: plugin-package
-          path: output
+          path: output/${{ env.version }}.tar.gz
     - name: Release built plugin
       uses: svenstaro/upload-release-action@v2
       with:

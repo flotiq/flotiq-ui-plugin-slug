@@ -4,9 +4,6 @@ permissions:
     contents: write
 
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
   pull_request:
 
 jobs:
@@ -28,8 +25,6 @@ jobs:
         MANIFEST="$BUILDFOLDER/plugin-manifest.json"
         VERSION=$(jq '.version' $MANIFEST -r)
         URL=$(jq '.url' $MANIFEST -r)
-        ENTRYPOINT_NAME=$(basename $URL)
-        ENTRYPOINT_PATH=$(find ./$BUILDFOLDER -name $ENTRYPOINT_NAME)
         echo "version=$VERSION"
         mkdir -p output
         tar -C $BUILDFOLDER -czf output/$VERSION.tar.gz .
@@ -40,7 +35,7 @@ jobs:
         UPLOAD_URL="$MINIO_URL/flotiq-plugins-dev/$REPO_NAME/$GITHUB_HEAD_REF/$ENTRYPOINT_PATH"
         echo $UPLOAD_URL
         tmp=$(mktemp)
-        jq --arg upload_url "$UPLOAD_URL" '.url = $upload_url' $MANIFEST && mv "$tmp" $MANIFEST
+        jq --arg upload_url "$UPLOAD_URL" '.url = $upload_url' $MANIFEST > "$tmp" && mv "$tmp" $MANIFEST
       env:
         MINIO_URL: ${{ secrets.MINIO_ENDPOINT }}
     - name: Minio Deploy
@@ -58,12 +53,4 @@ jobs:
       with:
           name: plugin-package
           path: output/${{ env.version }}.tar.gz
-    - name: Release built plugin
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: output/*
-        tag: ${{ env.version }}
-        overwrite: true
-        file_glob: true
-      if: github.ref == 'refs/heads/main'
+

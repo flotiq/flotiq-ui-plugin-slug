@@ -1,6 +1,6 @@
 {
   "name": "flotiq.plain-js-template",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "Flotiq team <helo@flotiq.com> (https://flotiq.com/)",
   "description": "A plain js example of Flotiq plugin. This plugin changes the rendering of some data in the grid. It renders colorful text properties, bold numbers, and relations as text.",
@@ -11,7 +11,7 @@
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css,html,mdx,json,yaml,yml,md}\""
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.26.8",
+    "@babel/eslint-parser": "^7.26.10",
     "esbuild": "^0.25.1",
     "esbuild-plugin-eslint": "^0.3.12",
     "esbuild-plugin-inline-import": "^1.1.0",

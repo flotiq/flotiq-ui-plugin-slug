@@ -8,16 +8,16 @@ i18n.init({
       translation: {
         Add: 'Add',
         ContentType: 'Content type',
-        Empty: 'There is no settings for this plugin',
+        Empty: 'There are no settings for this plugin',
         FieldNotFound: 'This field is no longer available',
         FieldRequired: 'This value should not be blank',
-        NoContentTypes: 'There is no content types',
+        NoContentTypes: 'There are no content types',
         NoFields:
           'Make sure the selected content type contains fields that can be used in the plugin. ' +
           'Allowed types: text, textarea, email, radio, select, date time',
         SaveChanges: 'Save changes',
         SavingError:
-          'Something occurred while updating plugin settings. Check console for more informations',
+          'Something occurred while updating plugin settings. Check console for more information',
         Settings: 'Settings',
         Source: 'Slug source field',
         SourceHelpText: 'The field on which the slug is based',
@@ -37,7 +37,7 @@ i18n.init({
         NoFields:
           'Upewnij się, że wybrany typ definicji zawiera pola, które mogą być wykorzystane we wtyczce. ' +
           'Dozwolone typy: tekst, długie pole tekstowe, email, pole wyboru, lista rozwijana, data i czas',
-        SaveChanges: 'Zapisz zamiany',
+        SaveChanges: 'Zapisz zmiany',
         SavingError:
           'Coś poszło nie tak podczas zapisywania ustawień wtyczki. Sprawdź konsolę, aby uzyskać więcej informacji',
         Settings: 'Ustawienia',

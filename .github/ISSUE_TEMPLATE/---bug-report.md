@@ -4,9 +4,9 @@ about: Report reproducible software issues, so we can improve
 
 ---
 
-Welcome to the Plugin for Flotiq plain js starter template GitHub repo!
+Welcome to the Flotiq Slug Plugin GitHub repo!
 
-For questions related to the creation og plugins, please check out docs at https://flotiq.com/docs/panel/PluginsDevelopment/plugins/
+For questions related to the creation of plugins, please check out docs at https://flotiq.com/docs/panel/PluginsDevelopment/plugins/
 
 For support, help, questions, requests and ideas use https://discord.gg/FwXcHnX
 

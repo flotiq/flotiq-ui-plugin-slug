@@ -18,7 +18,7 @@ export const handleFormFieldConfig = (
   { contentType, formik, config, name },
   getPluginSettings,
 ) => {
-  if (contentType?.id === pluginInfo.id && contentType?.nonCtdSchema) {
+  if (name && contentType?.id === pluginInfo.id && contentType?.nonCtdSchema) {
     const { index, type } =
       name.match(/config\[(?<index>\d+)\].(?<type>\w+)/)?.groups || {};
 

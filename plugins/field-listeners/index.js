@@ -5,11 +5,11 @@ export const handleFormFieldListenrsAdd = (
   { contentType, formik, name, isEditing },
   getPluginSettings,
 ) => {
-  if (contentType?.id === pluginInfo.id && contentType?.nonCtdSchema) {
+  if (name && contentType?.id === pluginInfo.id && contentType?.nonCtdSchema) {
     const { index, type } =
       name.match(/config\[(?<index>\d+)\].(?<type>\w+)/)?.groups || {};
 
-    if (!!index && type === 'content_type') {
+    if (index != null && type === 'content_type') {
       return {
         onChange: () => {
           formik.setFieldValue(`config[${index}].source`, '');

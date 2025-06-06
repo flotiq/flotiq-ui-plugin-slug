@@ -1,4 +1,4 @@
-import i18n from "i18next";
+import i18n from 'i18next';
 
 i18n.init({
   fallbackLng: 'en',
@@ -17,7 +17,7 @@ i18n.init({
           'Allowed types: text, textarea, email, radio, select, date time',
         SaveChanges: 'Save changes',
         SavingError:
-          'Something occured while updating plugin settings. Check console for more informations',
+          'Something occurred while updating plugin settings. Check console for more informations',
         Settings: 'Settings',
         Source: 'Slug source field',
         SourceHelpText: 'The field on which the slug is based',
@@ -36,7 +36,7 @@ i18n.init({
         NoContentTypes: 'Nie znaleziono definicji typu',
         NoFields:
           'Upewnij się, że wybrany typ definicji zawiera pola, które mogą być wykorzystane we wtyczce. ' +
-          'Dozwolone typy: tekst, długie pole tekstowe, email, pole wyboru, lista rozwijana, data i czas.',
+          'Dozwolone typy: tekst, długie pole tekstowe, email, pole wyboru, lista rozwijana, data i czas',
         SaveChanges: 'Zapisz zamiany',
         SavingError:
           'Coś poszło nie tak podczas zapisywania ustawień wtyczki. Sprawdź konsolę, aby uzyskać więcej informacji',

@@ -7,7 +7,7 @@ import cssString from 'inline:./styles/style.css';
 import { handleManagePlugin } from './manage-form';
 import { handleFormFieldConfig } from './field-config';
 import { handleMigrate } from './migrations';
-import { handleFormFieldListenrsAdd } from './field-listeners';
+import { handleFormFieldListenersAdd } from './field-listeners';
 
 registerFn(
   pluginInfo,
@@ -36,7 +36,7 @@ registerFn(
     );
 
     handler.on('flotiq.form.field.listeners::add', (data) =>
-      handleFormFieldListenrsAdd(data, getPluginSettings),
+      handleFormFieldListenersAdd(data, getPluginSettings),
     );
 
     handler.on('flotiq.language::changed', ({ language }) => {

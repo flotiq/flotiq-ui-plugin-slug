@@ -1,7 +1,7 @@
 import slug from 'slug';
 import pluginInfo from '../../plugin-manifest.json';
 
-export const handleFormFieldListenrsAdd = (
+export const handleFormFieldListenersAdd = (
   { contentType, formik, name, isEditing },
   getPluginSettings,
 ) => {
@@ -36,8 +36,7 @@ export const handleFormFieldListenrsAdd = (
     .map(({ target }) => target);
 
   return {
-    onBlur: ({ value, fieldApi, formApi }) => {
-      console.log(fieldApi, formApi);
+    onBlur: ({ value }) => {
       sourceSettings.forEach(async (fieldName) => {
         const targetType =
           contentType.schemaDefinition.allOf[1].properties?.[fieldName]?.type;

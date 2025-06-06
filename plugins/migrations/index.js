@@ -1,15 +1,22 @@
-import semver from "semver";
+import semver from 'semver';
 
 const settingsMigrations = [
   {
-    from: "1.0.1",
-    to: "1.1.0",
+    from: '1.0.1',
+    to: '1.1.0',
     migration: async (settings) =>
       settings.map(({ content_type, key, label }) => ({
         content_type: content_type,
         source: key,
         target: label,
       })),
+  },
+  {
+    from: '1.1.5',
+    to: '1.2.0',
+    migration: async (settings) => ({
+      config: settings,
+    }),
   },
 ];
 

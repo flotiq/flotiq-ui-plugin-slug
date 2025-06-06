@@ -1,6 +1,6 @@
 {
   "name": "flotiq-plugin-slug",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "license": "MIT",
   "author": "Flotiq team <helo@flotiq.com> (https://flotiq.com/)",
   "description": "A plain js example of Flotiq plugin. This plugin changes the rendering of some data in the grid. It renders colorful text properties, bold numbers, and relations as text.",
@@ -23,6 +23,8 @@
   "dependencies": {
     "chalk": "^5.4.1",
     "esbuild-plugin-copy": "^2.1.1",
-    "prettier": "^3.5.3"
+    "i18next": "^25.2.1",
+    "prettier": "^3.5.3",
+    "slug": "^11.0.0"
   }
 }

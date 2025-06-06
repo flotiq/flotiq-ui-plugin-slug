@@ -2,16 +2,29 @@
     <img src="https://editor.flotiq.com/fonts/fq-logo.svg" alt="Flotiq logo" title="Flotiq" align="right" height="60" />
 </a>
 
-# Plain JS Plugin template
+# Slug plugin
 
-## Quick start
+This plugin simplifies the process of creating slugs for your Content Object. It’s particularly useful when you want to generate slugs automatically based on existing data within a Content Object (e.g. the title of a blog post).
 
-1. `yarn` - to install dependencies
-2. `yarn start` - to start development mode - rebuild on file modifications
-3. update your `plugin-manifest.json` file to contain the production URL and other plugin information
-4. `yarn build` - to build plugins
+## Plugin outcome
 
-## Dev environment
+In the Content Object form, look for the refresh icon next to the slug field. If you’re creating a new object and the field is currently empty, it will be auto-filled. If you’re editing an existing object or the field contains data, click the refresh icon to regenerate the slug.
+
+<img src=".docs/images/slug_plugin.png" alt="plugin-item" width="700"/>
+
+## Configuring plugin
+
+To manage a plugin, you must first add it to your plugins. Click the "+" icon to add the plugin to your library and click the "Manage" button. It will open the plugin settings.
+
+<img src=".docs/images/slug_settings.png" alt="plugin-settings" width="700"/>
+
+Field descriptions: 
+
+* `Content Type` - Defines the type of objects for which the slug will be generated.
+* `Slug source field` - Determines the field on which the slug will be based.
+* `Target field` - Specifies the field to which the slug will be entered.
+
+# Development
 
 Dev environment is configured to use:
 

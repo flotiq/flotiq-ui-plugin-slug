@@ -85,35 +85,29 @@ export const getSchema = (contentTypes) => ({
   },
 });
 
-const addToErrors = (errors, index, field, error) => {
-  if (!errors.config) errors.config = [];
-  if (!errors.config[index]) errors.config[index] = {};
-  errors.config[index][field] = error;
-};
-
 export const getValidator = (validFieldKeys) => {
   const onValidate = (values) => {
     const errors = {};
 
     values.config?.forEach(({ content_type, source, target }, index) => {
       if (!content_type) {
-        addToErrors(errors, index, 'content_type', i18n.t('FieldRequired'));
+        errors[`config[${index}].content_type`] = i18n.t('FieldRequired');
       }
 
       const fieldKeys = validFieldKeys[content_type] || [];
 
       if (!source) {
-        addToErrors(errors, index, 'source', i18n.t('FieldRequired'));
+        errors[`config[${index}].source`] = i18n.t('FieldRequired');
       } else if (!fieldKeys.includes(source)) {
-        addToErrors(errors, index, 'source', i18n.t('FieldNotFound'));
+        errors[`config[${index}].source`] = i18n.t('FieldNotFound');
       }
 
       if (!target) {
-        addToErrors(errors, index, 'target', i18n.t('FieldRequired'));
+        errors[`config[${index}].target`] = i18n.t('FieldRequired');
       } else if (!fieldKeys.includes(target)) {
-        addToErrors(errors, index, 'target', i18n.t('FieldNotFound'));
+        errors[`config[${index}].target`] = i18n.t('FieldNotFound');
       } else if (source === target) {
-        addToErrors(errors, index, 'target', i18n.t('Unique'));
+        errors[`config[${index}].target`] = i18n.t('Unique');
       }
     });
 

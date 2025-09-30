@@ -6,16 +6,16 @@ import {
 } from '../../common/plugin-element-cache';
 import { validFieldsCacheKey } from '../../common/valid-fields';
 
-const regenerate = async (formik, fieldName, slugFieldName) => {
-  const source = formik.values[slugFieldName];
+const regenerate = async (form, fieldName, slugFieldName) => {
+  const source = form.getValue(slugFieldName);
   if (source) {
-    await formik.setFieldValue(fieldName, slug(source));
-    formik.setFieldTouched(fieldName);
+    await form.setFieldValue(fieldName, slug(source));
+    form.setFieldTouched(fieldName);
   }
 };
 
 export const handleFormFieldConfig = (
-  { contentType, formik, config, name },
+  { contentType, form, config, name },
   getPluginSettings,
 ) => {
   if (name && contentType?.id === pluginInfo.id && contentType?.nonCtdSchema) {
@@ -26,7 +26,7 @@ export const handleFormFieldConfig = (
 
     if (type !== 'content_type') {
       const { fieldOptions } = getCachedElement(validFieldsCacheKey) || {};
-      const ctd = formik.values.config[index].content_type;
+      const ctd = form.getValue(`config[${index}].content_type`);
       config.options = fieldOptions[ctd] || [];
     }
     return;
@@ -48,7 +48,7 @@ export const handleFormFieldConfig = (
     let button = getCachedElement(cacheKey)?.element;
 
     const cacheData = {
-      formik,
+      form,
       fieldName: name,
       slugFieldName: targetSettings.source,
     };
@@ -58,7 +58,7 @@ export const handleFormFieldConfig = (
       button.setAttribute('class', 'plugin-slug refresh-icon');
       button.addEventListener('click', () => {
         regenerate(
-          cacheData.formik,
+          cacheData.form,
           cacheData.fieldName,
           cacheData.slugFieldName,
         );

@@ -2,7 +2,7 @@ import slug from 'slug';
 import pluginInfo from '../../plugin-manifest.json';
 
 export const handleFormFieldListenersAdd = (
-  { contentType, formik, name, isEditing },
+  { contentType, form, name, isEditing },
   getPluginSettings,
 ) => {
   if (name && contentType?.id === pluginInfo.id && contentType?.nonCtdSchema) {
@@ -12,8 +12,8 @@ export const handleFormFieldListenersAdd = (
     if (index != null && type === 'content_type') {
       return {
         onChange: () => {
-          formik.setFieldValue(`config[${index}].source`, '');
-          formik.setFieldValue(`config[${index}].target`, '');
+          form.setFieldValue(`config[${index}].source`, '');
+          form.setFieldValue(`config[${index}].target`, '');
         },
       };
     }
@@ -41,11 +41,11 @@ export const handleFormFieldListenersAdd = (
         const targetType =
           contentType.schemaDefinition.allOf[1].properties?.[fieldName]?.type;
 
-        if (formik.values[fieldName] || targetType !== 'string') return;
+        if (form.getValue(fieldName) || targetType !== 'string') return;
 
         const newValue = slug(value);
-        await formik.setFieldValue(fieldName, newValue);
-        formik.setFieldTouched(fieldName);
+        await form.setFieldValue(fieldName, newValue);
+        form.setFieldTouched(fieldName);
       });
     },
   };
